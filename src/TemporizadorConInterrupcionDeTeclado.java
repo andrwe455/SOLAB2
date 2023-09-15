@@ -41,10 +41,15 @@ public class TemporizadorConInterrupcionDeTeclado {
         frame.addKeyListener(new KeyListener() {
             public void keyTyped(KeyEvent e) {
                     if (e.getKeyChar() == 's') { // Presiona 'i' para interrumpir el temporizador
-                    timer.stop();
+                        timer.stop();
                     System.out.println("Temporizador interrumpido.");
                     frame.dispose();
-                }
+                        try {
+                            throw new InterruptedException();
+                        } catch (InterruptedException ex) {
+                            JOptionPane.showMessageDialog(null, "Proceso interrumpido");
+                        }
+                    }
             }
 
             public void keyPressed(KeyEvent e) {
