@@ -47,7 +47,7 @@ public class TemporizadorConInterrupcionDeTeclado {
                         try {
                             throw new InterruptedException();
                         } catch (InterruptedException ex) {
-                            JOptionPane.showMessageDialog(null, "Proceso interrumpido");
+                            JOptionPane.showMessageDialog(null, "Proceso interrumpido","ALerta",2);
                         }
                     }
             }
@@ -56,16 +56,30 @@ public class TemporizadorConInterrupcionDeTeclado {
                 if (e.getKeyChar() == 'i') { // Presiona 'i' para interrumpir el temporizador
                     timer.stop();
                     System.out.println("Temporizador interrumpido.");
+                    JOptionPane.showMessageDialog(null, "Proceso interrumpido","ALerta",2);
                 }
             }
 
             public void keyReleased(KeyEvent e) {
                 if (e.getKeyChar() == 'r') { // Presiona 'r' para reanudar el temporizador
-                    timer.start();
+                    //timer.start();
                     System.out.println("Temporizador reanudado.");
+                    //JOptionPane.showMessageDialog(null, "Proceso reanudado","ALerta",2);
+                    int k = JOptionPane.showConfirmDialog(null,"Se reanudara el proceso","Alerta",
+                            JOptionPane.OK_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE);
+
+                    if(k==JOptionPane.OK_OPTION)
+                    {
+                        timer.start();
+                    }
+                    else
+                    {
+                        frame.dispose();
+                    }
+
                 }
             }
-            
+
         });
 
         frame.setFocusable(true);
