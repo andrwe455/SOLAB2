@@ -31,11 +31,9 @@ public class TemporizadorConInterrupcionDeTeclado {
         frame.add(label2);
         frame.add(label3);
 
-        timer = new Timer(10,new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                contador++;
-                label.setText("Contador: " + contador);
-            }
+        timer = new Timer(10, e -> {
+            contador++;
+            label.setText("Contador: " + contador);
         });
 
         frame.addKeyListener(new KeyListener() {
